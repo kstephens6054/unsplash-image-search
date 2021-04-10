@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 
-dotenv.configure();
+dotenv.config();
 
 exports.handler = async function(event, context) {
   const url = 'https://api.unsplash.com/photos/random';
