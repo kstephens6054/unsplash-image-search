@@ -1,7 +1,4 @@
 const fetch = require('node-fetch');
-const dotenv = require('dotenv');
-
-dotenv.config();
 
 const UNSPLASH_ACCESS_KEY='i1zKjeCtUmMWoUpz__Wgs7xufzVT8ajS7bFIUjjKvgo';
 
@@ -17,7 +14,7 @@ exports.handler = async function(event, context) {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({data, url, headers})
+      body: JSON.stringify(data)
     };
   } catch (error) {
     return {
