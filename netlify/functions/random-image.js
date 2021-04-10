@@ -3,10 +3,12 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+const UNSPLASH_ACCESS_KEY='i1zKjeCtUmMWoUpz__Wgs7xufzVT8ajS7bFIUjjKvgo';
+
 exports.handler = async function(event, context) {
   const url = 'https://api.unsplash.com/photos/random';
   const headers = {
-    'Authorization': `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`
+    'Authorization': `Client-ID ${UNSPLASH_ACCESS_KEY}`
   };
 
   try {
