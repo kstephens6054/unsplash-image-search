@@ -20,7 +20,7 @@ exports.handler = async (event, context) => {
   }
 
   const localEvent = {
-    event,
+    ...event,
     path: event.path.replace(PATH_PREFIX, ''),
     accessKey: process.env.UNSPLASH_ACCESS_KEY
   };
