@@ -14,6 +14,10 @@ exports.handler = async (event, context) => {
 
   const url = new URL(event.path.replace(PATH_PREFIX, API_URL));
 
+  if (event.rawQuery) {}
+    url.search = new URLSearchParams(event.rawQuery);
+  }
+
   return {
     statusCode: 200,
     body: JSON.stringify({
@@ -22,18 +26,29 @@ exports.handler = async (event, context) => {
     })
   };
   
-  const headers = {
+  const options = {
+    method: event.httpMethod,
+    headers: {
     'Authorization': `Client-ID ${ACCESS_KEY}`,
     'Accept-Version': 'v1'
+    }
   };
 
+  if (/^(?:POST|PUT|PATCH)$/i.test(event.httpMethod)) {
+    options.body = event.body
+  }
+
   try {
-    const response = await fetch(url, { headers });
+    const response = await fetch(url, options);
     const data = await response.json();
 
     return {
       statusCode: response.status,
-      body: JSON.stringify(data)
+      body: JSON.stringify({
+        url.toString(),
+        options,
+        data
+      })
     };
   } catch (error) {
     return {
