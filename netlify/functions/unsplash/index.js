@@ -1,38 +1,47 @@
-const { Path } = require('path-parser');
+const fetch = require('node-fetch');
 
-const { handler: photosHandler } = require('./photos');
-const { handler: searchHandler } = require('./search');
-
-const PATH_PREFIX = '/.netlify/functions/unsplash';
-
-const error404 = () => {
-  return {
-    statusCode: 404,
-    body: JSON.stringify({
-      error: 'Not Found'
-    })
-  }
-};
+const ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
+const PATH_PREFIX = process.env.NETLIFY_PATH_PREFIX;
+const API_URL = process.env.UNSPLASH_API_URL;
 
 exports.handler = async (event, context) => {
   if (!event.path.startsWith(PATH_PREFIX)) {
-    return error404();
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'Bad request'})
+    };
   }
 
-  const localEvent = {
-    rawEvent: event,
-    ...event,
-    path: event.path.replace(PATH_PREFIX, ''),
-    accessKey: process.env.UNSPLASH_ACCESS_KEY,
+  const url = new URL(event.path.replace(PATH_PREFIX, API_URL));
+
+  if (event.rawQuery) {
+    url.search = new URLSearchParams(event.rawQuery);
+  }
+
+  const options = {
+    method: event.httpMethod,
+    headers: {
+    'Authorization': `Client-ID ${ACCESS_KEY}`,
+    'Accept-Version': 'v1'
+    }
   };
 
-  if (localEvent.path.startsWith('/photos')) {
-    return photosHandler(localEvent, context);
+  if (/^(?:POST|PUT|PATCH)$/i.test(event.httpMethod)) {
+    options.body = event.body;
   }
 
-  if (localEvent.path.startsWith('/search')) {
-    return searchHandler(localEvent, context);
-  }
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
 
-  return error404();
+    return {
+      statusCode: response.status,
+      body: JSON.stringify(data)
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify(error)
+    };
+  }
 };
