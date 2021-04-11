@@ -19,6 +19,7 @@
   "homepage": "https://github.com/kstephens6054/unsplash-image-search#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "path-parser": "^6.1.0"
   }
 }
