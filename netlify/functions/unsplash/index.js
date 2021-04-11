@@ -8,9 +8,10 @@ const ORIGIN = process.env.REPLIT_ORIGIN_URL;
 exports.handler = async (event, context) => {
   if (event.httpMethod === 'OPTIONS') {
     const headers = {
-        'Access-Control-Allow-Origin': ORIGIN,
+        'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+        'Access-Control-Max-Age': 86400
     };
     
     return {
@@ -52,8 +53,9 @@ exports.handler = async (event, context) => {
     return {
       statusCode: response.status,
       headers: {
-        'Access-Control-Allow-Origin': ORIGIN,
-        'Access-Control-Allow-Headers': 'Content-Type'
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Max-Age': 86400
       },
       body: JSON.stringify(data)
     };

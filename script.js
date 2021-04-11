@@ -19,7 +19,10 @@ async function getRandomImages(query, count) {
   console.log(url.href)
 
   const options = {
-    mode: 'cors'
+    mode: 'cors',
+    headers: {
+      'Origin': 'https://unsplash-image-search.kstephens6054.repl.co'
+    }
   }
 
   try {
