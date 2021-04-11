@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
 
   const url = new URL(event.path.replace(PATH_PREFIX, API_URL));
 
-  if (event.rawQuery) {}
+  if (event.rawQuery) {
     url.search = new URLSearchParams(event.rawQuery);
   }
 
@@ -35,7 +35,7 @@ exports.handler = async (event, context) => {
   };
 
   if (/^(?:POST|PUT|PATCH)$/i.test(event.httpMethod)) {
-    options.body = event.body
+    options.body = event.body;
   }
 
   try {
@@ -45,7 +45,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: response.status,
       body: JSON.stringify({
-        url.toString(),
+        url: url.toString(),
         options,
         data
       })
@@ -55,4 +55,5 @@ exports.handler = async (event, context) => {
       statusCode: 500,
       body: JSON.stringify(error)
     };
-  }};
+  }
+};
