@@ -22,7 +22,8 @@ exports.handler = async (event, context) => {
   const localEvent = {
     ...event,
     path: event.path.replace(PATH_PREFIX, ''),
-    accessKey: process.env.UNSPLASH_ACCESS_KEY
+    accessKey: process.env.UNSPLASH_ACCESS_KEY,
+    rawEvent: event
   };
 
   if (localEvent.path.startsWith('/photos')) {
