@@ -35,7 +35,7 @@ async function getRandomImages(query, count) {
 
 const runCORSTest = async () => {
   const url = new URL(NETLIFY_API_HOST)
-  url.pathname = NETLIFY_PATH_PREFIX + '/cors-test'
+  url.pathname = '/.netlify/functions/cors-test'
 
   const options = {
     mode: 'cors',
