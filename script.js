@@ -33,7 +33,26 @@ async function getRandomImages(query, count) {
   }
 }
 
-getRandomImages('woman with cigar', 10).then(console.log);
+const runCORSTest = async () => {
+  const url = new URL(NETLIFY_API_HOST)
+  url.pathname = NETLIFY_PATH_PREFIX + '/cors-test'
+
+  const options = {
+    mode: 'cors',
+    headers: {
+      'Origin': 'https://unsplash-image-search.kstephens6054.repl.co'
+    }
+  }
+
+  try {
+    const response = await fetch(url.href, options)
+    return await response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+runCORSTest().then(console.log)
 
 window.addEventListener('DOMContentLoaded', (event) => {
   
