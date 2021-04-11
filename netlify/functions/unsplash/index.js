@@ -50,6 +50,10 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: response.status,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type'
+      }
       body: JSON.stringify(data)
     };
   } catch (error) {
