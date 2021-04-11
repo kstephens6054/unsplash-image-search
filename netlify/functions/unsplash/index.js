@@ -18,14 +18,6 @@ exports.handler = async (event, context) => {
     url.search = new URLSearchParams(event.rawQuery);
   }
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      url: url.toString(),
-      event
-    })
-  };
-  
   const options = {
     method: event.httpMethod,
     headers: {
