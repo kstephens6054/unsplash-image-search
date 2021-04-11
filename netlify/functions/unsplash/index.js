@@ -53,7 +53,7 @@ exports.handler = async (event, context) => {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type'
-      }
+      },
       body: JSON.stringify(data)
     };
   } catch (error) {

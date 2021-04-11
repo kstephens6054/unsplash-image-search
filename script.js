@@ -42,9 +42,7 @@ async function getRandomImages(query, count) {
   url.search = params
   console.log(url.href)
 
-  const options = {
-    mode: 'cors'
-  }
+  const options = {}
 
   try {
     const response = await fetch(url.href, options)
@@ -56,5 +54,5 @@ async function getRandomImages(query, count) {
   }
 }
 
-preflight()
+//preflight()
 getRandomImages('woman with cigar', 10)
