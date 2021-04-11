@@ -1,7 +1,7 @@
 const { Path } = require('path-parser');
 
-const { handler as photosHandler } = require('./photos');
-const { handler as searchHandler } = require('./search');
+const { handler: photosHandler } = require('./photos');
+const { handler: searchHandler } = require('./search');
 
 const PATH_PREFIX = '/.netlify/functions/unsplash';
 
