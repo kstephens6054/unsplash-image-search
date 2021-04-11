@@ -14,7 +14,7 @@ const error404 = () => {
   }
 };
 
-exports.handler = async function(event, context) {
+exports.handler = async (event, context) => {
   if (!event.path.startsWith(PATH_PREFIX)) {
     return error404();
   }
@@ -22,7 +22,7 @@ exports.handler = async function(event, context) {
   const localEvent = {
     event,
     path: event.path.replace(PATH_PREFIX, ''),
-    accessKey: process.env.UNSPLASH_ACCESS_KEY;
+    accessKey: process.env.UNSPLASH_ACCESS_KEY
   };
 
   if (localEvent.path.startsWith('/photos')) {
