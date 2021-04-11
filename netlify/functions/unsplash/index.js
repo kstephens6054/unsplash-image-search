@@ -3,11 +3,12 @@ const fetch = require('node-fetch');
 const ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 const PATH_PREFIX = process.env.NETLIFY_PATH_PREFIX;
 const API_URL = process.env.UNSPLASH_API_URL;
+const ORIGIN = process.env.REPLIT_ORIGIN_URL;
 
 exports.handler = async (event, context) => {
   if (event.httpMethod === 'OPTIONS') {
     const headers = {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': ORIGIN,
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
     };
@@ -51,7 +52,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: response.status,
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': ORIGIN,
         'Access-Control-Allow-Headers': 'Content-Type'
       },
       body: JSON.stringify(data)
