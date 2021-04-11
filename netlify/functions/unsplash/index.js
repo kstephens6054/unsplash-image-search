@@ -36,11 +36,7 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: response.status,
-      body: JSON.stringify({
-        url: url.toString(),
-        options,
-        data
-      })
+      body: JSON.stringify(data)
     };
   } catch (error) {
     return {
