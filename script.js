@@ -27,10 +27,47 @@ async function getRandomImages(query, count) {
 
   try {
     const response = await fetch(url.href, options)
-    const data = await response.json()
+    return await response.json()
   } catch (error) {
-    console.error(error)
+    console.log(error)
   }
 }
 
-getRandomImages('woman with cigar', 10)
+getRandomImages('woman with cigar', 10).then(console.log);
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  
+  const searchForm = document.querySelector('#search-form');
+  const searchTerms = document.querySelector('#search-terms');
+  const imageCount = document.querySelector('#image-count');
+  const currentImage = document.querySelector('#current-image');
+
+  const state = {
+    searchTerms: '',
+    imageCount: 1,
+    images: []
+  };
+
+  searchForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    if (searchTerms.value !== '') {
+      state.searchTerms = searchTerms.value;
+    }
+
+    if (imageCount.value !== '') {
+      let count = parseInt(imageCount.value);
+      state.imageCount = isNaN(count) ? 1 : count;
+    }
+
+    const result = await getRandomImages(state.searchTerms, state.imageCount);
+
+    if (result.errors) {
+      console.log('ERROR: ', result.errors);
+    }
+
+    state.images = result;
+    currentImage.src = state.images[0].urls.regular;
+  })
+
+});

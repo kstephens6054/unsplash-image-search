@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --background-color: rgb(51, 55, 79);
+  --color: rgb(238, 241, 245);
+  --input-border-color:rgba(238, 241, 245, 0.7);
+  --button-primary: rgb(8, 88, 180);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  background-image: url('cloth-background-01-1280.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--color);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 3.5rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0 1rem;
+}
+
+header .unsplash-logo {
+  font-size: 2rem;
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-left: 3rem;
+}
+
+header .smallcaps {
+  text-transform: uppercase;
+  font-size: 1.75rem;
+}
+
+.form-wrapper {
+  padding: 0.2rem 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid var(--input-border-color);
+  border-radius: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  margin-right: 2.5rem;
+}
+
+.form-input label {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.optional {
+  text-transform: uppercase;
+  font-size: 67%;
+}
+
+.form-input input {
+  display: block;
+}
+
+input#search-terms {
+  font-size: 1.2rem;
+  min-width: 32ch;
+}
+
+input#search-terms {
+  font-size: 1.2rem;
+  min-width: 32ch;
+}
+
+input#image-count {
+  font-size: 1.2rem;
+  min-width: 6ch;
+  width: 6ch;
+  text-align: right;
+}
+
+.btn-primary {
+  background-color: var(--button-primary);
+  color: var(--color);
+  font-size: 1.2rem;
+  border: 3px solid var(--input-border-color);
+  border-radius: 0.75rem;
+  outline: none;
+  width: 6rem;
+  height: 4rem;
+  cursor: pointer;
+}
+
+i.loading-image {
+  width: 480px;
+  height: 320px;
+  font-size: 20rem;
+  color: rgba(238, 241, 245, 0.2);
+}
+
+footer {
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.85rem;
+  line-height: 1.25rem;
+}
+
+footer a {
+  color: white;
+  font-weight: bolder;
+  text-decoration: none;
+}

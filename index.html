@@ -1,14 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <h1>Random Image</h1>
-    <div id="image-wrapper"></div>
-    <script src="script.js"></script>
-  </body>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Unsplash Random Images</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+	 crossorigin="anonymous" />
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<header>
+		<i class="unsplash-logo fab fa-unsplash"></i>
+    <h1>
+      Unsplash
+      <span class="smallcaps">Random Image</span>
+    </h1>
+  </header>
+  <div class="form-wrapper">
+    <form id="search-form">
+      <div class="input-group">
+        <div class="form-input">
+          <label for="search-terms">
+            Search
+            <span class="optional">optional</span>
+          </label>
+          <input
+            id="search-terms"
+            name="search-terms"
+            type="text"
+            placeholder="Enter some terms to refine your search"
+            value=""
+          />
+        </div>
+        <div class="form-input">
+          <label for="image-count">
+            Number of images
+          </label>
+          <input
+            id="image-count"
+            name="image-count"
+            type="number"
+            min-value="1"
+            max-value="50"
+            value="1"
+          />
+        </div>
+      </div>
+      <div class="button-bar">
+        <button class="btn btn-primary" type="submit">
+          Get the images
+        </button>
+      </div>
+    </form>
+  </div>
+	<div id="image-wrapper">
+    <i class="loading-image fa fa-image" aria-hidden="true"></i>
+    <img id="current-image" src="blank.png" alt=""/>
+  </div>
+  <footer>
+    <p>Copyright &copy;2021 Kurt Stephens
+      &nbsp;&mdash;&nbsp;
+    All photos courtesy of <a class="unsplash-link" href="https://unsplash.com/?utm_source=Netlify+Search+Demo&utm_medium=referral">Unsplash</a>
+    <p>Check out this code on <a class="github-link" href="https://github.com/kstephens6054/unsplash-image-search">
+    <i class="fab fa-github"></i>&nbsp;GitHub</p>
+  </footer>
+	<script src="script.js">
+	</script>
+</body>
+
 </html>
